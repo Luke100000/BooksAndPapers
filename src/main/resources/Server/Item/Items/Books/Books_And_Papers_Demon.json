@@ -1,0 +1,66 @@
+{
+  "Parent": "Template_Books_And_Papers",
+  "TranslationProperties": {
+    "Name": "items.Books_And_Papers_Demon.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Books_And_Papers_Demon.png",
+  "IconProperties": {
+    "Scale": 0.6,
+    "Rotation": [
+      23.0,
+      45.0,
+      299.0
+    ],
+    "Translation": [
+      -12.0,
+      -7.0
+    ]
+  },
+  "Quality": "Common",
+  "Model": "Items/Books_And_Papers_Demon.blockymodel",
+  "Texture": "Items/Books_And_Papers_Demon.png",
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "Effects": {
+            "LocalSoundEventId": "SFX_Books_And_Papers_Open"
+          }
+        },
+        {
+          "Type": "OpenCustomUI",
+          "Page": {
+            "Id": "Books_And_Papers_Book",
+            "Style": "Demon",
+            "Background": "Demon"
+          }
+        }
+      ]
+    }
+  },
+  "Recipe": {
+    "TimeSeconds": 3,
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Trunk",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Ingredient_Leather_Medium",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Workbench",
+        "Type": "Crafting",
+        "Categories": [
+          "Workbench_Tools",
+          "Books"
+        ]
+      }
+    ],
+    "KnowledgeRequired": false
+  }
+}

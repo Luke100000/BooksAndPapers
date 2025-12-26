@@ -1,0 +1,72 @@
+{
+  "TranslationProperties": {
+    "Name": "items.Books_And_Papers_Mailbox.name",
+    "Description": "items.Books_And_Papers_Mailbox.description"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Furniture.Containers"
+  ],
+  "Set": "Furniture_Adventure",
+  "IconProperties": {
+    "Scale": 0.6,
+    "Rotation": [
+      22.0,
+      43.0,
+      18.0
+    ],
+    "Translation": [
+      -1.0,
+      -23.0
+    ]
+  },
+  "BlockType": {
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Wood",
+    "CustomModel": "Blocks/Books_And_Papers_Mailbox.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Books_And_Papers_Mailbox.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Woods"
+      }
+    },
+    "HitboxType": "Books_And_Papers_Mailbox",
+    "InteractionHint": "interactionHints.booksAndPapers.collectMail",
+    "Material": "Solid",
+    "Opacity": "Cutout",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "VariantRotation": "NESW",
+    "ParticleColor": "#2e3742",
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "Books_And_Papers_Mailbox"
+          }
+        ]
+      }
+    }
+  },
+  "Icon": "Icons/ItemsGenerated/Books_And_Papers_Mailbox.png",
+  "ItemSoundSetId": "ISS_Blocks_Wood",
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Wood"
+    ]
+  }
+}

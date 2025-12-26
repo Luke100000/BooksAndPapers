@@ -1,0 +1,17 @@
+{
+  "Layers": [
+    {
+      "Files": [
+        "Sounds/BooksAndPapers/Open.ogg"
+      ],
+      "Volume": 0,
+      "RandomSettings": {
+        "MinPitch": -1,
+        "MaxPitch": 1
+      }
+    }
+  ],
+  "Volume": 0,
+  "Pitch": 0,
+  "AudioCategory": "AudioCat_Inventory"
+}

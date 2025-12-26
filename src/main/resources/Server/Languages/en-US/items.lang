@@ -1,0 +1,8 @@
+Books_And_Papers_Book.name = Book
+Books_And_Papers_Demon.name = Demonic Book
+Books_And_Papers_Herbalist.name = Herbalist's Notebook
+Books_And_Papers_Letter.name = Letter
+Books_And_Papers_Parchment.name = Parchment
+
+Books_And_Papers_Mailbox.name = Mailbox
+Books_And_Papers_Mailbox.description = Interact to send or receive letters from other players.

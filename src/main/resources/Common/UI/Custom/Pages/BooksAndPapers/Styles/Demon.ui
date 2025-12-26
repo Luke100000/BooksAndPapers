@@ -1,0 +1,34 @@
+$C = "../../../Common.ui";
+$B = "../BookBase.ui";
+
+$C.@PageOverlay {}
+
+Group #Background {
+    Anchor: (Width: 700, Height: 800);
+    Padding: (Left: 110, Right: 110, Top: 55, Bottom: 85);
+    LayoutMode: Full;
+
+    Background: (TexturePath: "../../Common/Book.png");
+
+    $B.@BookGroup {
+        Anchor: (Full: 0);
+
+        #Title {
+            Style: InputFieldStyle(FontName: "Secondary", FontSize: 24, TextColor: #DDDDDD(0.8));
+        }
+
+        #TitleLabel {
+            Style: LabelStyle(FontName: "Secondary", FontSize: 24, TextColor: #DDDDDD(0.8), HorizontalAlignment: Center, Wrap: false);
+        }
+
+        #Content {
+            Style: InputFieldStyle(FontName: "Default", FontSize: 16, TextColor: #DDDDDD(0.7));
+        }
+
+        #ContentLabel {
+            Style: LabelStyle(FontName: "Default", FontSize: 16, TextColor: #DDDDDD(0.7), HorizontalAlignment: Start, Wrap: true);
+        }
+    }
+}
+
+$C.@BackButton {}

@@ -1,0 +1,78 @@
+$C = "../../Common.ui";
+
+$C.@PageOverlay {}
+
+@ClearButtonStyle = (
+  Texture: (TexturePath: "../../Common/ClearInputIcon.png", Color: #ffffff(0.3)),
+  HoveredTexture: (TexturePath: "../../Common/ClearInputIcon.png", Color: #ffffff(0.5)),
+  PressedTexture: (TexturePath: "../../Common/ClearInputIcon.png", Color: #ffffff(0.4)),
+  Width: 16,
+  Height: 16,
+  Side: Right,
+  Offset: 10
+);
+
+@DefaultDropdownBoxLabelStyle = LabelStyle(TextColor: #96a9be, VerticalAlignment: Center, FontSize: 16);
+@DefaultDropdownBoxEntryLabelStyle = LabelStyle(...@DefaultDropdownBoxLabelStyle, TextColor: #b7cedd);
+
+@DropdownBoxStyle = DropdownBoxStyle(
+    ...$C.@DefaultDropdownBoxStyle,
+    LabelStyle: @DefaultDropdownBoxLabelStyle,
+    EntryLabelStyle: @DefaultDropdownBoxEntryLabelStyle,
+    PanelAlign: Bottom,
+    SearchInputStyle: (
+        Background: #000000,
+        Icon: (Texture: (TexturePath: "../../Common/SearchIcon.png", Color: #ffffff(0.25)), Width: 16, Height: 16, Offset: 5),
+        ClearButtonStyle: @ClearButtonStyle,
+        Anchor: (Height: 30),
+        Padding: (Left: 27),
+        PlaceholderText: %ui.general.filterField.placeholder,
+        PlaceholderStyle: (
+            TextColor: #ffffff(0.4),
+            RenderItalics: true,
+            FontSize: 14
+        ),
+        Style: (FontSize: 14)
+    )
+);
+
+$C.@Container {
+    Anchor: (Width: 450, Height: 160);
+
+    #Title {
+        $C.@Title {
+           @Text = %customUI.booksAndPapers.composeTitle;
+        }
+    }
+
+    #Content {
+        LayoutMode: Top;
+
+        $C.@DropdownBox #Recipient {
+            Style: @DropdownBoxStyle;
+            ShowSearchInput: true;
+            FlexWeight: 1;
+        }
+
+        Group {
+            LayoutMode: Left;
+            Anchor: (Top: 15);
+
+            $C.@SecondaryTextButton #Cancel {
+                Text: %customUI.booksAndPapers.cancel;
+                FlexWeight: 1;
+            }
+
+            Group {
+                Anchor: (Width: 5);
+            }
+
+            $C.@TextButton #Send {
+                Text: %customUI.booksAndPapers.send;
+                FlexWeight: 1;
+            }
+        }
+    }
+}
+
+$C.@BackButton {}

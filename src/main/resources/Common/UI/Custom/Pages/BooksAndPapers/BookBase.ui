@@ -1,0 +1,137 @@
+$C = "../../Common.ui";
+
+@EditButton = Button {
+  Style: (
+    Default: (Background: (TexturePath: "../../Common/Sketched/Edit.png", Color: #ffffff(0.6))),
+    Hovered: (Background: (TexturePath: "../../Common/Sketched/Edit.png", Color: #ffffff(0.9))),
+    Pressed: (Background: (TexturePath: "../../Common/Sketched/Edit.png", Color: #ffffff(0.8))),
+  );
+};
+
+@NextButton = Button {
+  Style: (
+    Default: (Background: (TexturePath: "../../Common/Sketched/Next.png", Color: #ffffff(0.6))),
+    Hovered: (Background: (TexturePath: "../../Common/Sketched/Next.png", Color: #ffffff(0.9))),
+    Pressed: (Background: (TexturePath: "../../Common/Sketched/Next.png", Color: #ffffff(0.8))),
+    Sounds: (Activate: (SoundPath: "../../Sounds/Next.ogg", MinPitch: -3, MaxPitch: 3))
+  );
+};
+
+@PreviousButton = Button {
+  Style: (
+    Default: (Background: (TexturePath: "../../Common/Sketched/Previous.png", Color: #ffffff(0.6))),
+    Hovered: (Background: (TexturePath: "../../Common/Sketched/Previous.png", Color: #ffffff(0.9))),
+    Pressed: (Background: (TexturePath: "../../Common/Sketched/Previous.png", Color: #ffffff(0.8))),
+    Sounds: (Activate: (SoundPath: "../../Sounds/Next.ogg", MinPitch: -3, MaxPitch: 3))
+  );
+};
+
+@SignButton = Button {
+  Style: (
+    Default: (Background: (TexturePath: "../../Common/Sketched/Lock.png", Color: #ffffff(0.6))),
+    Hovered: (Background: (TexturePath: "../../Common/Sketched/Lock.png", Color: #ffffff(0.9))),
+    Pressed: (Background: (TexturePath: "../../Common/Sketched/Lock.png", Color: #ffffff(0.8))),
+  );
+};
+
+@BookGroup = Group {
+    LayoutMode: Top;
+
+    Group #Book {
+        LayoutMode: Full;
+        Anchor: (Top: 10, Height: 30);
+
+        TextField #Title {
+            Anchor: (Left: 20);
+
+            PlaceholderText: %customUI.booksAndPapers.title;
+
+            Style: InputFieldStyle(FontName: "Secondary", FontSize: 24, TextColor: #000000(0.8));
+            PlaceholderStyle: InputFieldStyle(FontName: "Secondary", FontSize: 24, TextColor: #000000(0.3));
+
+            IsReadOnly: false;
+
+            Visible: false;
+        }
+
+        Label #TitleLabel {
+            Anchor: (Full: 0);
+
+            Style: LabelStyle(FontName: "Secondary", FontSize: 24, TextColor: #000000(0.8), HorizontalAlignment: Center, Wrap: false);
+        }
+    }
+
+    Group {
+        LayoutMode: Full;
+        Anchor: (Top: 15);
+        FlexWeight: 1;
+
+        MultilineTextField #Content {
+            Anchor: (Full: 0);
+
+            PlaceholderText: %customUI.booksAndPapers.empty;
+
+            Style: InputFieldStyle(FontName: "Default", FontSize: 16, TextColor: #000000(0.7));
+            PlaceholderStyle: InputFieldStyle(FontName: "Default", FontSize: 16, TextColor: #000000(0.3));
+
+            ScrollbarStyle: ScrollbarStyle(Size: 0);
+
+            IsReadOnly: false;
+
+            Visible: false;
+        }
+
+        Label #ContentLabel {
+            Anchor: (Full: 0);
+
+            Style: LabelStyle(FontName: "Default", FontSize: 16, TextColor: #000000(0.7), HorizontalAlignment: Start, Wrap: true);
+        }
+    }
+
+    Group {
+        LayoutMode: Center;
+        Anchor: (Top: 12);
+
+        @SignButton #Sign {
+            Anchor: (Width: 40, Height: 40);
+            TooltipText: %customUI.booksAndPapers.sign;
+        }
+
+        Group {
+            Anchor: (Width: 40);
+        }
+
+        @PreviousButton #Previous {
+            Anchor: (Width: 40, Height: 40);
+            TooltipText: %customUI.booksAndPapers.previous;
+        }
+
+        Group {
+            Anchor: (Width: 15);
+        }
+
+        Label #PageNumber {
+            Anchor: (Width: 90, Height: 40);
+            Text: "1/1";
+            Style: LabelStyle(FontName: "Secondary", FontSize: 24, TextColor: #000000(0.75), HorizontalAlignment: Center, VerticalAlignment: Center, LetterSpacing: 4);
+        }
+
+        Group {
+            Anchor: (Width: 15);
+        }
+
+        @NextButton #Next {
+            Anchor: (Width: 40, Height: 40);
+            TooltipText: %customUI.booksAndPapers.next;
+        }
+
+        Group {
+            Anchor: (Width: 40);
+        }
+
+        @EditButton #Edit {
+            Anchor: (Width: 40, Height: 40);
+            TooltipText: %customUI.booksAndPapers.edit;
+        }
+    }
+};

@@ -1,0 +1,18 @@
+$C = "../../../Common.ui";
+$B = "../BookBase.ui";
+
+$C.@PageOverlay {}
+
+Group #Background {
+    Anchor: (Width: 800, Height: 800);
+    Padding: (Left: 185, Right: 185, Top: 80, Bottom: 72);
+    LayoutMode: Full;
+
+    Background: (TexturePath: "../../Common/Book.png");
+
+    $B.@BookGroup {
+        Anchor: (Full: 0);
+    }
+}
+
+$C.@BackButton {}

@@ -1,0 +1,32 @@
+{
+  "Categories": [
+    "Items.Books",
+    "Items.Tools"
+  ],
+  "Quality": "Template",
+  "Model": "Items/Books_And_Papers_Book.blockymodel",
+  "Texture": "Items/Books_And_Papers_Book.png",
+  "ItemLevel": 10,
+  "MaxStack": 1,
+  "UsePlayerAnimations": true,
+  "PlayerAnimationsId": "Spellbook",
+  "ItemSoundSetId": "ISS_Books_And_Papers_Books",
+  "Tags": {
+    "Type": [
+      "Book"
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Template_Books_And_Papers.png",
+  "IconProperties": {
+    "Scale": 0.7,
+    "Rotation": [
+      30.0,
+      57.0,
+      15.0
+    ],
+    "Translation": [
+      -4.0,
+      -12.0
+    ]
+  }
+}
