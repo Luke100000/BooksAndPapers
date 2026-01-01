@@ -6,7 +6,7 @@ import com.hypixel.hytale.server.core.modules.interaction.interaction.config.ser
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
-import net.conczin.data.Mailbox;
+import net.conczin.data.MailboxResource;
 import net.conczin.gui.BookUISupplier;
 
 import javax.annotation.Nonnull;
@@ -15,7 +15,7 @@ import javax.annotation.Nonnull;
 public class BooksAndPapers extends JavaPlugin {
     private static BooksAndPapers instance;
 
-    private ResourceType<EntityStore, Mailbox> mailbox;
+    private ResourceType<EntityStore, MailboxResource> mailbox;
 
 
     public BooksAndPapers(@Nonnull JavaPluginInit init) {
@@ -25,7 +25,7 @@ public class BooksAndPapers extends JavaPlugin {
 
     @Override
     protected void setup() {
-        this.mailbox = this.getEntityStoreRegistry().registerResource(Mailbox.class, "BooksAndPapersMailbox", Mailbox.CODEC);
+        this.mailbox = this.getEntityStoreRegistry().registerResource(MailboxResource.class, "BooksAndPapersMailboxes", MailboxResource.CODEC);
 
         this.getCodecRegistry(Interaction.CODEC).register("Books_And_Papers_Mailbox", MailboxInteraction.class, MailboxInteraction.CODEC);
 
@@ -36,7 +36,7 @@ public class BooksAndPapers extends JavaPlugin {
         return instance;
     }
 
-    public ResourceType<EntityStore, Mailbox> getMailbox() {
+    public ResourceType<EntityStore, MailboxResource> getMailbox() {
         return mailbox;
     }
 }

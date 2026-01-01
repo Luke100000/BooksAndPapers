@@ -16,11 +16,12 @@ import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.Universe;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import net.conczin.data.BookData;
-import net.conczin.data.Mailbox;
+import net.conczin.data.MailboxResource;
 import net.conczin.utils.RecordCodec;
 import net.conczin.utils.Utils;
 
 import javax.annotation.Nonnull;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
@@ -39,9 +40,13 @@ public class MailComposeGui extends CodecDataInteractiveUIPage<MailComposeGui.Da
 
         // Build recipient dropdown
         List<DropdownEntryInfo> recipients = new LinkedList<>();
+        MailboxResource mailboxResource = ref.getStore().getResource(MailboxResource.getResourceType());
         for (PlayerRef player : Universe.get().getPlayers()) {
-            recipients.add(new DropdownEntryInfo(LocalizableString.fromString(player.getUsername()), player.getUuid().toString()));
+            mailboxResource.getMailbox(player.getUuid()).setPlayerName(player.getUsername());
         }
+        mailboxResource.getMailboxes().entrySet().stream()
+                .sorted(Comparator.comparing(m -> m.getValue().getPlayerName()))
+                .forEach(mb -> recipients.add(new DropdownEntryInfo(LocalizableString.fromString(mb.getValue().getPlayerName()), String.valueOf(mb.getKey()))));
         commandBuilder.set("#Recipient.Entries", recipients);
 
         eventBuilder.addEventBinding(CustomUIEventBindingType.Activating, "#Send", new EventData().append("Action", "Send").append("@Recipient", "#Recipient.Value"));
@@ -66,8 +71,8 @@ public class MailComposeGui extends CodecDataInteractiveUIPage<MailComposeGui.Da
                 ItemStack itemInHand = inventory.getActiveHotbarItem();
                 BookData book = itemInHand != null ? itemInHand.getFromMetadataOrNull(METADATA_KEY, BookData.CODEC) : null;
                 if (book != null) {
-                    Mailbox mailbox = ref.getStore().getResource(Mailbox.getResourceType());
-                    mailbox.push(UUID.fromString(data.recipient), itemInHand);
+                    MailboxResource mailboxResource = ref.getStore().getResource(MailboxResource.getResourceType());
+                    mailboxResource.push(UUID.fromString(data.recipient), itemInHand);
                     inventory.getHotbar().replaceItemStackInSlot(inventory.getActiveHotbarSlot(), itemInHand, ItemStack.EMPTY);
                 }
             }

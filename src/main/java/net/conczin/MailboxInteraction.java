@@ -18,7 +18,7 @@ import com.hypixel.hytale.server.core.universe.world.SoundUtil;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import net.conczin.data.BookData;
-import net.conczin.data.Mailbox;
+import net.conczin.data.MailboxResource;
 import net.conczin.gui.MailComposeGui;
 import net.conczin.utils.Utils;
 
@@ -60,9 +60,11 @@ public class MailboxInteraction extends SimpleBlockInteraction {
             playSound(commandBuffer, targetBlock, ref, "SFX_Minigame_Victory"); // TODO
         } else {
             // Retrieve mail
-            Mailbox mailbox = store.getResource(Mailbox.getResourceType());
-            if (mailbox.has(uuid)) {
-                ItemStack pop = mailbox.pop(uuid);
+            MailboxResource mailboxResource = store.getResource(MailboxResource.getResourceType());
+            MailboxResource.MailBox mailbox = mailboxResource.getMailbox(uuid);
+            mailbox.setPlayerName(player.getDisplayName());
+            if (mailbox.hasMail()) {
+                ItemStack pop = mailbox.pop();
                 if (pop != null) {
                     SimpleItemContainer.addOrDropItemStacks(store, ref, player.getInventory().getCombinedHotbarFirst(), List.of(pop));
                     playSound(commandBuffer, targetBlock, ref, "SFX_Minigame_Victory"); // TODO
