@@ -22,10 +22,10 @@ repositories {
 }
 
 def hytaleJar = System.getProperty("user.home") +
-        "/AppData/Roaming/Hytale/install/release/package/game/latest/Server/HytaleServer.jar"
+        "/AppData/Roaming/Hytale/install/$patchline/package/game/latest/Server/HytaleServer.jar"
 
 def hytaleSourcesJar = System.getProperty("user.home") +
-        "/AppData/Roaming/Hytale/install/release/package/game/latest/Server/HytaleServer-Sources.jar"
+        "/AppData/Roaming/Hytale/install/$patchline/package/game/latest/Server/HytaleServer-Sources.jar"
 
 dependencies {
     implementation(files(hytaleJar))
@@ -84,7 +84,7 @@ tasks.register('run', JavaExec) {
             '--allow-op',
             '--disable-sentry',
             '--auth-mode=insecure',
-            "--assets=C:\\Users\\${user}\\AppData\\Roaming\\Hytale\\install\\release\\package\\game\\latest\\Assets.zip",
+            "--assets=${System.getProperty("user.home")}/AppData/Roaming/Hytale/install/release/package/game/latest/Assets.zip",
             "--mods=${modsPath}"
     ]
 }
