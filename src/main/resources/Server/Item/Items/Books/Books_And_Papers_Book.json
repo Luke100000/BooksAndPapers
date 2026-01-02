@@ -56,8 +56,7 @@
         "Id": "Workbench",
         "Type": "Crafting",
         "Categories": [
-          "Workbench_Tools",
-          "Books"
+          "Workbench_Tools"
         ]
       }
     ],
