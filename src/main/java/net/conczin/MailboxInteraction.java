@@ -33,7 +33,7 @@ public class MailboxInteraction extends SimpleBlockInteraction {
     public static final BuilderCodec<MailboxInteraction> CODEC = BuilderCodec.builder(
                     MailboxInteraction.class, MailboxInteraction::new, SimpleBlockInteraction.CODEC
             )
-            .documentation("Retrieves or sends mail when clicking on a mailbox.")
+            .documentation("Retrieves or sends mail.")
             .build();
 
     @Override
@@ -56,8 +56,7 @@ public class MailboxInteraction extends SimpleBlockInteraction {
         if (book != null) {
             // Send mail
             Utils.setPage(ref, store, MailComposeGui::new);
-
-            playSound(commandBuffer, targetBlock, ref, "SFX_Minigame_Victory"); // TODO
+            playSound(commandBuffer, targetBlock, ref, "SFX_Books_And_Papers_Mailbox_Send");
         } else {
             // Retrieve mail
             MailboxResource mailboxResource = store.getResource(MailboxResource.getResourceType());
@@ -67,11 +66,11 @@ public class MailboxInteraction extends SimpleBlockInteraction {
                 ItemStack pop = mailbox.pop();
                 if (pop != null) {
                     SimpleItemContainer.addOrDropItemStacks(store, ref, player.getInventory().getCombinedHotbarFirst(), List.of(pop));
-                    playSound(commandBuffer, targetBlock, ref, "SFX_Minigame_Victory"); // TODO
+                    playSound(commandBuffer, targetBlock, ref, "SFX_Books_And_Papers_Mailbox_Receive");
                 }
             } else {
                 player.sendMessage(Message.translation("interactions.booksAndPapers.mailbox.empty"));
-                playSound(commandBuffer, targetBlock, ref, "SFX_Minigame_Victory"); // TODO
+                playSound(commandBuffer, targetBlock, ref, "SFX_Books_And_Papers_Mailbox_Empty");
             }
         }
     }
