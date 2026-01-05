@@ -1,5 +1,5 @@
 {
-  "Group": "net.conczin",
+  "Group": "Conczin",
   "Name": "Books and Papers",
   "Version": "0.0.1",
   "Description": "Various writable books, a mail system, and hidden lore across the world",
@@ -7,10 +7,10 @@
     {
       "Name": "Conczin",
       "Email": "conczin@gmail.com",
-      "Url": "conczin.net"
+      "Url": "https://conczin.net/"
     }
   ],
-  "Website": "conczin.net",
+  "Website": "https://conczin.net/",
   "Main": "net.conczin.BooksAndPapers",
   "ServerVersion": "*",
   "Dependencies": {},

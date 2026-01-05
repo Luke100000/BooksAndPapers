@@ -104,18 +104,19 @@ import org.apache.http.impl.client.HttpClients
 tasks.register('publish') {
     doLast {
         if (!env.isPresent("API_TOKEN")) {
-            throw new GradleException("Environment variable FOO is not set")
+            throw new GradleException("Environment variable API_TOKEN is not set")
         }
 
+        def displayName = providers.gradleProperty("displayName").get()
         def metadata = [
                 changelog    : new File("${project.projectDir}/changelog.md").text,
                 changelogType: "markdown",
-                "displayName": "${project.displayName} - ${project.version}",
+                "displayName": "${displayName} - ${project.version}",
                 releaseType  : "alpha"
         ]
 
         def client = HttpClients.createDefault()
-        def post = new HttpPost("https://hytale.curseforge.com/api/projects/${projectId}/upload-file")
+        def post = new HttpPost("https://minecraft.curseforge.com/api/projects/${projectId}/upload-file/")
 
         def entity = MultipartEntityBuilder.create()
                 .addTextBody(
@@ -145,6 +146,8 @@ tasks.register('publish') {
                 throw new GradleException("Response is not a valid JSON object containing 'id': $text")
             }
             println "Upload successful, ID: ${json.id}"
+        } catch (Exception e) {
+            throw new GradleException("Failed to publish: ${e.message}, Response: ${response}")
         } finally {
             response.close()
         }

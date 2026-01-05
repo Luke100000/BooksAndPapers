@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.function.Function;
 
-@SuppressWarnings({"unused", "DuplicatedCode"})
+@SuppressWarnings({"unused"})
 public abstract class RecordCodec<C> implements Codec<C> {
     public static <C> RecordCodec<C> composite(
             final Functions.Function0<C> factory
