@@ -1,7 +1,7 @@
 {
   "Parent": "Template_Books_And_Papers",
   "TranslationProperties": {
-    "Name": "items.Books_And_Papers_Demon.name"
+    "Name": "server.items.Books_And_Papers_Demon.name"
   },
   "Icon": "Icons/ItemsGenerated/Books_And_Papers_Demon.png",
   "IconProperties": {

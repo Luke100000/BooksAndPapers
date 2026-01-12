@@ -44,7 +44,7 @@ $C = "../../Common.ui";
         TextField #Title {
             Anchor: (Left: 20);
 
-            PlaceholderText: %customUI.booksAndPapers.title;
+            PlaceholderText: %server.customUI.booksAndPapers.title;
 
             Style: InputFieldStyle(FontName: "Secondary", FontSize: 24, TextColor: #000000(0.8));
             PlaceholderStyle: InputFieldStyle(FontName: "Secondary", FontSize: 24, TextColor: #000000(0.3));
@@ -69,7 +69,7 @@ $C = "../../Common.ui";
         MultilineTextField #Content {
             Anchor: (Full: 0);
 
-            PlaceholderText: %customUI.booksAndPapers.empty;
+            PlaceholderText: %server.customUI.booksAndPapers.empty;
 
             Style: InputFieldStyle(FontName: "Default", FontSize: 16, TextColor: #000000(0.7));
             PlaceholderStyle: InputFieldStyle(FontName: "Default", FontSize: 16, TextColor: #000000(0.3));
@@ -94,7 +94,7 @@ $C = "../../Common.ui";
 
         @SignButton #Sign {
             Anchor: (Width: 40, Height: 40);
-            TooltipText: %customUI.booksAndPapers.sign;
+            TooltipText: %server.customUI.booksAndPapers.sign;
         }
 
         Group {
@@ -103,7 +103,7 @@ $C = "../../Common.ui";
 
         @PreviousButton #Previous {
             Anchor: (Width: 40, Height: 40);
-            TooltipText: %customUI.booksAndPapers.previous;
+            TooltipText: %server.customUI.booksAndPapers.previous;
         }
 
         Group {
@@ -122,7 +122,7 @@ $C = "../../Common.ui";
 
         @NextButton #Next {
             Anchor: (Width: 40, Height: 40);
-            TooltipText: %customUI.booksAndPapers.next;
+            TooltipText: %server.customUI.booksAndPapers.next;
         }
 
         Group {
@@ -131,7 +131,7 @@ $C = "../../Common.ui";
 
         @EditButton #Edit {
             Anchor: (Width: 40, Height: 40);
-            TooltipText: %customUI.booksAndPapers.edit;
+            TooltipText: %server.customUI.booksAndPapers.edit;
         }
     }
 };

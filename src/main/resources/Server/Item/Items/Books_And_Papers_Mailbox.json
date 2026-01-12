@@ -1,7 +1,7 @@
 {
   "TranslationProperties": {
-    "Name": "items.Books_And_Papers_Mailbox.name",
-    "Description": "items.Books_And_Papers_Mailbox.description"
+    "Name": "server.items.Books_And_Papers_Mailbox.name",
+    "Description": "server.items.Books_And_Papers_Mailbox.description"
   },
   "PlayerAnimationsId": "Block",
   "Categories": [
@@ -37,7 +37,7 @@
       }
     },
     "HitboxType": "Books_And_Papers_Mailbox",
-    "InteractionHint": "interactionHints.booksAndPapers.collectMail",
+    "InteractionHint": "server.interactionHints.booksAndPapers.collectMail",
     "Material": "Solid",
     "Opacity": "Cutout",
     "Support": {

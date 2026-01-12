@@ -7,7 +7,7 @@ $C.@Container {
 
     #Title {
         $C.@Title {
-           @Text = %customUI.booksAndPapers.signTitle;
+           @Text = %server.customUI.booksAndPapers.signTitle;
         }
     }
 
@@ -17,13 +17,13 @@ $C.@Container {
         $C.@TextField #TitleField {
             @Anchor = (Left: 0, Top: 12);
 
-            PlaceholderText: %customUI.booksAndPapers.title;
+            PlaceholderText: %server.customUI.booksAndPapers.title;
         }
 
         $C.@TextField #Author {
             @Anchor = (Left: 0, Top: 12);
 
-            PlaceholderText: %customUI.booksAndPapers.author;
+            PlaceholderText: %server.customUI.booksAndPapers.author;
         }
 
         Group {
@@ -31,7 +31,7 @@ $C.@Container {
             Anchor: (Top: 15);
 
             $C.@SecondaryTextButton #Cancel {
-                Text: %customUI.booksAndPapers.cancel;
+                Text: %server.customUI.booksAndPapers.cancel;
                 FlexWeight: 1;
             }
 
@@ -40,7 +40,7 @@ $C.@Container {
             }
 
             $C.@TextButton #Sign {
-                Text: %customUI.booksAndPapers.sign;
+                Text: %server.customUI.booksAndPapers.sign;
                 FlexWeight: 1;
             }
         }

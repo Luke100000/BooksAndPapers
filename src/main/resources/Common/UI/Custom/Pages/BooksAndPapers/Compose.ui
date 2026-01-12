@@ -41,7 +41,7 @@ $C.@Container {
 
     #Title {
         $C.@Title {
-           @Text = %customUI.booksAndPapers.composeTitle;
+           @Text = %server.customUI.booksAndPapers.composeTitle;
         }
     }
 
@@ -59,7 +59,7 @@ $C.@Container {
             Anchor: (Top: 15);
 
             $C.@SecondaryTextButton #Cancel {
-                Text: %customUI.booksAndPapers.cancel;
+                Text: %server.customUI.booksAndPapers.cancel;
                 FlexWeight: 1;
             }
 
@@ -68,7 +68,7 @@ $C.@Container {
             }
 
             $C.@TextButton #Send {
-                Text: %customUI.booksAndPapers.send;
+                Text: %server.customUI.booksAndPapers.send;
                 FlexWeight: 1;
             }
         }
