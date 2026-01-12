@@ -21,11 +21,17 @@ repositories {
     mavenCentral()
 }
 
-def hytaleJar = System.getProperty("user.home") +
-        "/AppData/Roaming/Hytale/install/$patchline/package/game/latest/Server/HytaleServer.jar"
+def isLinux = System.getProperty("os.name").toLowerCase().contains("linux")
 
-def hytaleSourcesJar = System.getProperty("user.home") +
-        "/AppData/Roaming/Hytale/install/$patchline/package/game/latest/Server/HytaleServer-Sources.jar"
+def hytaleBasePath = env.isPresent("HYTALE_PATH")
+        ? env.fetch("HYTALE_PATH")
+        : System.getProperty("user.home") + (isLinux
+        ? "/.var/app/com.hypixel.HytaleLauncher/data/Hytale"
+        : "/AppData/Roaming/Hytale")
+
+
+def hytaleJar = "$hytaleBasePath/install/$patchline/package/game/latest/Server/HytaleServer.jar"
+def hytaleSourcesJar = "$hytaleBasePath/install/$patchline/package/game/latest/Server/HytaleServer-Sources.jar"
 
 dependencies {
     implementation(files(hytaleJar))
@@ -83,8 +89,7 @@ tasks.register('run', JavaExec) {
     args = [
             '--allow-op',
             '--disable-sentry',
-            '--auth-mode=insecure',
-            "--assets=${System.getProperty("user.home")}/AppData/Roaming/Hytale/install/release/package/game/latest/Assets.zip",
+            "--assets=$hytaleBasePath/install/release/package/game/latest/Assets.zip",
             "--mods=${modsPath}"
     ]
 }
@@ -131,7 +136,7 @@ tasks.register('publish') {
                                 .get()
                                 .asFile,
                         ContentType.APPLICATION_OCTET_STREAM,
-                        "${project.name}.jar"
+                        "${archiveBaseName}-${project.version}.jar"
                 )
                 .build()
 

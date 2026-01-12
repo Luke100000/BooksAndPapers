@@ -59,7 +59,7 @@ public class BooksGui extends CodecDataInteractiveUIPage<BooksGui.Data> {
         }
 
         // Settings
-        commandBuilder.set("#Background.Background.TexturePath", "Common/" + background + ".png");
+        commandBuilder.set("#Background.Background", "Common/" + background + ".png");
 
         // Content
         BookData.Page page = book.getOrCreatePage(this.page);

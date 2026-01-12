@@ -26,7 +26,7 @@ $C.@PageOverlay {}
         ClearButtonStyle: @ClearButtonStyle,
         Anchor: (Height: 30),
         Padding: (Left: 27),
-        PlaceholderText: %ui.general.filterField.placeholder,
+        PlaceholderText: %server.customUI.searchPlaceholder,
         PlaceholderStyle: (
             TextColor: #ffffff(0.4),
             RenderItalics: true,
