@@ -68,5 +68,24 @@
     "Family": [
       "Wood"
     ]
+  },
+  "Recipe": {
+    "TimeSeconds": 2,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Iron",
+        "Quantity": 2
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Workbench",
+        "Type": "Crafting",
+        "Categories": [
+          "Workbench_Tinkering"
+        ]
+      }
+    ],
+    "KnowledgeRequired": false
   }
 }

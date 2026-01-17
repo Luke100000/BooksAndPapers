@@ -117,7 +117,7 @@ tasks.register('publish') {
                 changelog    : new File("${project.projectDir}/changelog.md").text,
                 changelogType: "markdown",
                 "displayName": "${displayName} - ${project.version}",
-                releaseType  : "alpha"
+                releaseType  : "release"
         ]
 
         def client = HttpClients.createDefault()
