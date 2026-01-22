@@ -1,0 +1,25 @@
+items.Books_And_Papers_Book.name = Book
+items.Books_And_Papers_Demon.name = Demonic Book
+items.Books_And_Papers_Herbalist.name = Herbalist's Notebook
+items.Books_And_Papers_Letter.name = Letter
+items.Books_And_Papers_Parchment.name = Parchment
+
+items.Books_And_Papers_Mailbox.name = Mailbox
+items.Books_And_Papers_Mailbox.description = Interact to send or receive letters from other players.
+
+interactions.booksAndPapers.mailbox.empty = Your mailbox is empty.
+
+interactionHints.booksAndPapers.collectMail = "Press [{key}] to collect mail"
+
+customUI.booksAndPapers.previous = Previous Page
+customUI.booksAndPapers.next = Next Page
+customUI.booksAndPapers.signTitle = Sign and Lock
+customUI.booksAndPapers.sign = Sign
+customUI.booksAndPapers.composeTitle = Send to Player's Mailbox
+customUI.booksAndPapers.send = Send
+customUI.booksAndPapers.recipient = Recipient
+customUI.booksAndPapers.edit = Toggle Edit Mode
+customUI.booksAndPapers.empty = Empty
+customUI.booksAndPapers.title = Title
+customUI.booksAndPapers.author = Author
+customUI.booksAndPapers.cancel = Cancel
