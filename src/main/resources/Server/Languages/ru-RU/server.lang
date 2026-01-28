@@ -1,25 +1,25 @@
-items.Books_And_Papers_Book.name = Book
-items.Books_And_Papers_Demon.name = Demonic Book
-items.Books_And_Papers_Herbalist.name = Herbalist's Notebook
-items.Books_And_Papers_Letter.name = Letter
-items.Books_And_Papers_Parchment.name = Parchment
+items.Books_And_Papers_Book.name = Книга
+items.Books_And_Papers_Demon.name = Демоническая Книга
+items.Books_And_Papers_Herbalist.name = Тетрадь Ботаника
+items.Books_And_Papers_Letter.name = Письмо
+items.Books_And_Papers_Parchment.name = Пергамент
 
-items.Books_And_Papers_Mailbox.name = Mailbox
-items.Books_And_Papers_Mailbox.description = Interact to send or receive letters from other players.
+items.Books_And_Papers_Mailbox.name = Почтовый Ящик
+items.Books_And_Papers_Mailbox.description = Откройте, чтобы отправлять или получать письма от других игроков.
 
-interactions.booksAndPapers.mailbox.empty = Your mailbox is empty.
+interactions.booksAndPapers.mailbox.empty = Ваш почтовый ящик пуст.
 
-interactionHints.booksAndPapers.collectMail = "Press [{key}] to collect mail"
+interactionHints.booksAndPapers.collectMail = "Нажмите [{key}], чтобы получить почту"
 
-customUI.booksAndPapers.previous = Previous Page
-customUI.booksAndPapers.next = Next Page
-customUI.booksAndPapers.signTitle = Sign and Lock
-customUI.booksAndPapers.sign = Sign
-customUI.booksAndPapers.composeTitle = Send to Player's Mailbox
-customUI.booksAndPapers.send = Send
-customUI.booksAndPapers.recipient = Recipient
-customUI.booksAndPapers.edit = Toggle Edit Mode
-customUI.booksAndPapers.empty = Empty
-customUI.booksAndPapers.title = Title
-customUI.booksAndPapers.author = Author
-customUI.booksAndPapers.cancel = Cancel
+customUI.booksAndPapers.previous = Предыдущая Страница
+customUI.booksAndPapers.next = Следующая Страница
+customUI.booksAndPapers.signTitle = Подписать и Закрыть
+customUI.booksAndPapers.sign = Подписать
+customUI.booksAndPapers.composeTitle = Отправить в Почтовый Ящик Игрока
+customUI.booksAndPapers.send = Отправить
+customUI.booksAndPapers.recipient = Получатель
+customUI.booksAndPapers.edit = Режим Редактирования
+customUI.booksAndPapers.empty = Пусто
+customUI.booksAndPapers.title = Название
+customUI.booksAndPapers.author = Автор
+customUI.booksAndPapers.cancel = Отмена
