@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.function.Function;
 
-@SuppressWarnings({"unused"})
+@SuppressWarnings({"unused", "unchecked"})
 public abstract class RecordCodec<C> implements Codec<C> {
     public static <C> RecordCodec<C> composite(
             final Functions.Function0<C> factory
@@ -47,7 +47,6 @@ public abstract class RecordCodec<C> implements Codec<C> {
                 new Field<>(nameB, codecB, getterB)
         );
     }
-
 
     public static <C, T0, T1, T2> RecordCodec<C> composite(
             String nameA, Codec<T0> codecA, Function<C, T0> getterA,
@@ -87,7 +86,6 @@ public abstract class RecordCodec<C> implements Codec<C> {
             Functions.Function1<T0, C> factory,
             Field<C, T0> fieldA
     ) {
-        //noinspection unchecked
         return compositeInternal(
                 args -> factory.apply((T0) args[0]),
                 fieldA
@@ -98,7 +96,6 @@ public abstract class RecordCodec<C> implements Codec<C> {
             Functions.Function2<T0, T1, C> factory,
             Field<C, T0> fieldA, Field<C, T1> fieldB
     ) {
-        //noinspection unchecked
         return compositeInternal(
                 args -> factory.apply((T0) args[0], (T1) args[1]),
                 fieldA, fieldB
@@ -109,7 +106,6 @@ public abstract class RecordCodec<C> implements Codec<C> {
             Functions.Function3<T0, T1, T2, C> factory,
             Field<C, T0> fieldA, Field<C, T1> fieldB, Field<C, T2> fieldC
     ) {
-        //noinspection unchecked
         return compositeInternal(
                 args -> factory.apply((T0) args[0], (T1) args[1], (T2) args[2]),
                 fieldA, fieldB, fieldC
@@ -121,7 +117,6 @@ public abstract class RecordCodec<C> implements Codec<C> {
             Field<C, T0> fieldA, Field<C, T1> fieldB, Field<C, T2> fieldC,
             Field<C, T3> fieldD
     ) {
-        //noinspection unchecked
         return compositeInternal(
                 args -> factory.apply(
                         (T0) args[0], (T1) args[1], (T2) args[2], (T3) args[3]
@@ -135,7 +130,6 @@ public abstract class RecordCodec<C> implements Codec<C> {
             Field<C, T0> fieldA, Field<C, T1> fieldB, Field<C, T2> fieldC,
             Field<C, T3> fieldD, Field<C, T4> fieldE
     ) {
-        //noinspection unchecked
         return compositeInternal(
                 args -> factory.apply(
                         (T0) args[0], (T1) args[1], (T2) args[2], (T3) args[3], (T4) args[4]
@@ -149,7 +143,6 @@ public abstract class RecordCodec<C> implements Codec<C> {
             Field<C, T0> fieldA, Field<C, T1> fieldB, Field<C, T2> fieldC,
             Field<C, T3> fieldD, Field<C, T4> fieldE, Field<C, T5> fieldF
     ) {
-        //noinspection unchecked
         return compositeInternal(
                 args -> factory.apply(
                         (T0) args[0], (T1) args[1], (T2) args[2],
@@ -165,7 +158,6 @@ public abstract class RecordCodec<C> implements Codec<C> {
             Field<C, T3> fieldD, Field<C, T4> fieldE, Field<C, T5> fieldF,
             Field<C, T6> fieldG
     ) {
-        //noinspection unchecked
         return compositeInternal(
                 args -> factory.apply(
                         (T0) args[0], (T1) args[1], (T2) args[2],
@@ -181,7 +173,6 @@ public abstract class RecordCodec<C> implements Codec<C> {
             Field<C, T3> fieldD, Field<C, T4> fieldE, Field<C, T5> fieldF,
             Field<C, T6> fieldG, Field<C, T7> fieldH
     ) {
-        //noinspection unchecked
         return compositeInternal(
                 args -> factory.apply(
                         (T0) args[0], (T1) args[1], (T2) args[2],
@@ -198,7 +189,6 @@ public abstract class RecordCodec<C> implements Codec<C> {
             Field<C, T3> fieldD, Field<C, T4> fieldE, Field<C, T5> fieldF,
             Field<C, T6> fieldG, Field<C, T7> fieldH, Field<C, T8> fieldI
     ) {
-        //noinspection unchecked
         return compositeInternal(
                 args -> factory.apply(
                         (T0) args[0], (T1) args[1], (T2) args[2],
@@ -216,7 +206,6 @@ public abstract class RecordCodec<C> implements Codec<C> {
             Field<C, T6> fieldG, Field<C, T7> fieldH, Field<C, T8> fieldI,
             Field<C, T9> fieldJ
     ) {
-        //noinspection unchecked
         return compositeInternal(
                 args -> factory.apply(
                         (T0) args[0], (T1) args[1], (T2) args[2],
@@ -282,12 +271,56 @@ public abstract class RecordCodec<C> implements Codec<C> {
         };
     }
 
+    @Nonnull
+    public static String readRawJson(@Nonnull RawJsonReader reader) throws IOException {
+        reader.consumeWhiteSpace();
+        int first = reader.peek();
+        if (first == -1) throw new IOException("Unexpected EOF!");
+
+        StringBuilder sb = new StringBuilder();
+        char startChar = (char) first;
+
+        int depth = 0;
+        boolean inString = false;
+        boolean escape = false;
+
+        while (true) {
+            int j = reader.read();
+            if (j == -1) break;
+            char c = (char) j;
+            sb.append(c);
+
+            if (inString) {
+                if (escape) {
+                    escape = false;
+                } else if (c == '\\') {
+                    escape = true;
+                } else if (c == '"') {
+                    inString = false;
+                }
+                continue;
+            }
+
+            switch (c) {
+                case '"' -> inString = true;
+                case '{', '[' -> depth++;
+                case '}', ']' -> {
+                    depth--;
+                    if (depth == 0) return sb.toString();
+                }
+            }
+        }
+
+        throw new IOException("Unexpected EOF!");
+    }
+
+
     @Nullable
     @Override
     public C decodeJson(@Nonnull RawJsonReader reader, ExtraInfo extraInfo) throws IOException {
-        //noinspection deprecation
-        BsonValue bsonvalue = RawJsonReader.readBsonValue(reader);
-        return this.decode(bsonvalue, extraInfo);
+        String rawJson = readRawJson(reader);
+        BsonValue bson = BsonDocument.parse(rawJson);
+        return this.decode(bson, extraInfo);
     }
 
     @Override

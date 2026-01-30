@@ -9,7 +9,7 @@ items.Books_And_Papers_Mailbox.description = Interact to send or receive letters
 
 interactions.booksAndPapers.mailbox.empty = Your mailbox is empty.
 
-interactionHints.booksAndPapers.collectMail = "Press [{key}] to collect mail"
+interactionHints.booksAndPapers.collectMail = "Press [{key}] to collect mail or send a letter in your hand."
 
 customUI.booksAndPapers.previous = Previous Page
 customUI.booksAndPapers.next = Next Page

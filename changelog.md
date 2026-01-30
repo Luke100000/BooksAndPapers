@@ -1,3 +1,8 @@
+# 1.1.0
+
+* Fixed issues with non-ascii characters
+* Clarified send mail tooltip
+
 # 1.0.2
 
 * Fixed the missing mailbox recipe
