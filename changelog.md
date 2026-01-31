@@ -3,6 +3,7 @@
 * Added the lectern to showcase and copy books
 * Fixed issues with non-ascii characters
 * Clarified send mail tooltip
+* You can now send empty books for whatever reason
 
 # 1.0.2
 

@@ -15,7 +15,6 @@ import com.hypixel.hytale.server.core.ui.builder.UIEventBuilder;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.Universe;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
-import net.conczin.data.BookData;
 import net.conczin.data.MailboxResource;
 import net.conczin.utils.RecordCodec;
 import net.conczin.utils.Utils;
@@ -25,8 +24,6 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
-
-import static net.conczin.data.BookData.METADATA_KEY;
 
 
 public class MailComposeGui extends CodecDataInteractiveUIPage<MailComposeGui.Data> {
@@ -69,12 +66,9 @@ public class MailComposeGui extends CodecDataInteractiveUIPage<MailComposeGui.Da
             if (data.recipient != null) {
                 Inventory inventory = Utils.getInventory(ref);
                 ItemStack itemInHand = inventory.getActiveHotbarItem();
-                BookData book = itemInHand != null ? itemInHand.getFromMetadataOrNull(METADATA_KEY, BookData.CODEC) : null;
-                if (book != null) {
-                    MailboxResource mailboxResource = ref.getStore().getResource(MailboxResource.getResourceType());
-                    mailboxResource.push(UUID.fromString(data.recipient), itemInHand);
-                    inventory.getHotbar().replaceItemStackInSlot(inventory.getActiveHotbarSlot(), itemInHand, ItemStack.EMPTY);
-                }
+                MailboxResource mailboxResource = ref.getStore().getResource(MailboxResource.getResourceType());
+                mailboxResource.push(UUID.fromString(data.recipient), itemInHand);
+                inventory.getHotbar().replaceItemStackInSlot(inventory.getActiveHotbarSlot(), itemInHand, ItemStack.EMPTY);
             }
             close();
         }

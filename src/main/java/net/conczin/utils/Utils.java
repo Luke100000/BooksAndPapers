@@ -3,13 +3,18 @@ package net.conczin.utils;
 import com.hypixel.hytale.codec.builder.BuilderCodec;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.protocol.BlockPosition;
+import com.hypixel.hytale.protocol.InteractionType;
 import com.hypixel.hytale.server.core.entity.UUIDComponent;
 import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.inventory.Inventory;
 import com.hypixel.hytale.server.core.inventory.ItemStack;
+import com.hypixel.hytale.server.core.modules.interaction.interaction.config.Interaction;
+import com.hypixel.hytale.server.core.modules.interaction.interaction.config.RootInteraction;
+import com.hypixel.hytale.server.core.modules.interaction.interaction.config.server.OpenCustomUIInteraction;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.meta.state.ItemContainerState;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
+import net.conczin.gui.BookUISupplier;
 
 import java.lang.reflect.Field;
 import java.util.UUID;
@@ -87,6 +92,21 @@ public class Utils {
         ItemContainerState inventory = getInventory(world, targetBlock);
         if (inventory != null) {
             return inventory.getItemContainer().getItemStack((short) slot);
+        }
+        return null;
+    }
+
+    public static BookUISupplier getBookSupplier(ItemStack itemStack) {
+        String rootInteraction = itemStack.getItem().getInteractions().get(InteractionType.Secondary);
+        RootInteraction asset = RootInteraction.getAssetMap().getAsset(rootInteraction);
+        if (asset == null) return null;
+        for (String interactionId : asset.getInteractionIds()) {
+            Interaction interaction = Interaction.getAssetMap().getAsset(interactionId);
+            if (interaction instanceof OpenCustomUIInteraction openCustomUIInteraction) {
+                if (Utils.get(openCustomUIInteraction, "customPageSupplier", OpenCustomUIInteraction.CustomPageSupplier.class) instanceof BookUISupplier supplier) {
+                    return supplier;
+                }
+            }
         }
         return null;
     }

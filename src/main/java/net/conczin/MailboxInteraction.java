@@ -18,7 +18,6 @@ import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.SoundUtil;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
-import net.conczin.data.BookData;
 import net.conczin.data.MailboxResource;
 import net.conczin.gui.MailComposeGui;
 import net.conczin.utils.Utils;
@@ -27,8 +26,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
-
-import static net.conczin.data.BookData.METADATA_KEY;
 
 public class MailboxInteraction extends SimpleBlockInteraction {
     public static final BuilderCodec<MailboxInteraction> CODEC = BuilderCodec.builder(
@@ -55,8 +52,7 @@ public class MailboxInteraction extends SimpleBlockInteraction {
         PlayerRef playerref = commandBuffer.getComponent(ref, PlayerRef.getComponentType());
         if (playerref == null) return;
 
-        BookData book = itemInHand != null ? itemInHand.getFromMetadataOrNull(METADATA_KEY, BookData.CODEC) : null;
-        if (book != null) {
+        if (itemInHand != null && Utils.getBookSupplier(itemInHand) != null) {
             // Send mail
             player.getPageManager().openCustomPage(ref, store, new MailComposeGui(playerref));
             playSound(commandBuffer, targetBlock, ref, "SFX_Books_And_Papers_Mailbox_Send");

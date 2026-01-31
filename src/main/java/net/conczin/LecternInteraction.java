@@ -16,10 +16,7 @@ import com.hypixel.hytale.server.core.entity.entities.player.pages.PageManager;
 import com.hypixel.hytale.server.core.inventory.ItemStack;
 import com.hypixel.hytale.server.core.inventory.container.ItemContainer;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.CooldownHandler;
-import com.hypixel.hytale.server.core.modules.interaction.interaction.config.Interaction;
-import com.hypixel.hytale.server.core.modules.interaction.interaction.config.RootInteraction;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.config.client.SimpleBlockInteraction;
-import com.hypixel.hytale.server.core.modules.interaction.interaction.config.server.OpenCustomUIInteraction;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.SoundUtil;
 import com.hypixel.hytale.server.core.universe.world.World;
@@ -62,7 +59,7 @@ public class LecternInteraction extends SimpleBlockInteraction {
 
         // Fetch book if item appears to be one
         BookData bookInHand = null;
-        if (itemInHand != null && getCustomPageSupplier(itemInHand) != null) {
+        if (itemInHand != null && Utils.getBookSupplier(itemInHand) != null) {
             bookInHand = itemInHand.getFromMetadataOrDefault(METADATA_KEY, BookData.CODEC);
         }
 
@@ -71,7 +68,7 @@ public class LecternInteraction extends SimpleBlockInteraction {
         BookUISupplier pageSupplier = null;
         ItemStack itemInLectern = Utils.getItemFromContainer(world, targetBlock, 0);
         if (itemInLectern != null) {
-            pageSupplier = getCustomPageSupplier(itemInLectern);
+            pageSupplier = Utils.getBookSupplier(itemInLectern);
             if (pageSupplier != null) {
                 bookInLectern = itemInLectern.getFromMetadataOrDefault(METADATA_KEY, BookData.CODEC);
             }
@@ -109,21 +106,6 @@ public class LecternInteraction extends SimpleBlockInteraction {
                 }
             }
         }
-    }
-
-    private static BookUISupplier getCustomPageSupplier(ItemStack itemStack) {
-        String rootInteraction = itemStack.getItem().getInteractions().get(InteractionType.Secondary);
-        RootInteraction asset = RootInteraction.getAssetMap().getAsset(rootInteraction);
-        if (asset == null) return null;
-        for (String interactionId : asset.getInteractionIds()) {
-            Interaction interaction = Interaction.getAssetMap().getAsset(interactionId);
-            if (interaction instanceof OpenCustomUIInteraction openCustomUIInteraction) {
-                if (Utils.get(openCustomUIInteraction, "customPageSupplier", OpenCustomUIInteraction.CustomPageSupplier.class) instanceof BookUISupplier supplier) {
-                    return supplier;
-                }
-            }
-        }
-        return null;
     }
 
     private static void playSound(CommandBuffer<EntityStore> commandBuffer, Vector3i targetBlock, Ref<EntityStore> ref, String sound) {
