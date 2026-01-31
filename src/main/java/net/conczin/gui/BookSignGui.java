@@ -3,6 +3,7 @@ package net.conczin.gui;
 import com.hypixel.hytale.codec.Codec;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
+import com.hypixel.hytale.protocol.BlockPosition;
 import com.hypixel.hytale.protocol.packets.interface_.CustomPageLifetime;
 import com.hypixel.hytale.protocol.packets.interface_.CustomUIEventBindingType;
 import com.hypixel.hytale.server.core.entity.entities.Player;
@@ -22,8 +23,12 @@ import static net.conczin.data.BookData.METADATA_KEY;
 
 
 public class BookSignGui extends CodecDataInteractiveUIPage<BookSignGui.Data> {
-    public BookSignGui(@Nonnull PlayerRef playerRef, @Nonnull CustomPageLifetime lifetime) {
-        super(playerRef, lifetime, Data.CODEC);
+    private final BlockPosition block;
+
+    public BookSignGui(@Nonnull PlayerRef playerRef, BlockPosition block) {
+        super(playerRef, CustomPageLifetime.CanDismiss, Data.CODEC);
+
+        this.block = block;
     }
 
     @Override
@@ -62,7 +67,7 @@ public class BookSignGui extends CodecDataInteractiveUIPage<BookSignGui.Data> {
     }
 
     private void sign(Ref<EntityStore> ref, String title, String author) {
-        BookData book = Utils.getData(ref, METADATA_KEY, BookData.CODEC);
+        BookData book = Utils.getData(ref, block, METADATA_KEY, BookData.CODEC);
         if (book.signed) return;
 
         book.author = author;
@@ -70,6 +75,6 @@ public class BookSignGui extends CodecDataInteractiveUIPage<BookSignGui.Data> {
         book.signed = true;
         book.trim();
 
-        Utils.setData(ref, METADATA_KEY, BookData.CODEC, book);
+        Utils.setData(ref, block, METADATA_KEY, BookData.CODEC, book);
     }
 }

@@ -14,6 +14,7 @@ import com.hypixel.hytale.server.core.inventory.ItemStack;
 import com.hypixel.hytale.server.core.inventory.container.SimpleItemContainer;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.CooldownHandler;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.config.client.SimpleBlockInteraction;
+import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.SoundUtil;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
@@ -51,11 +52,13 @@ public class MailboxInteraction extends SimpleBlockInteraction {
         UUID uuid = Utils.getUUID(ref);
         Player player = store.getComponent(ref, Player.getComponentType());
         if (player == null) return;
+        PlayerRef playerref = commandBuffer.getComponent(ref, PlayerRef.getComponentType());
+        if (playerref == null) return;
 
         BookData book = itemInHand != null ? itemInHand.getFromMetadataOrNull(METADATA_KEY, BookData.CODEC) : null;
         if (book != null) {
             // Send mail
-            Utils.setPage(ref, store, MailComposeGui::new);
+            player.getPageManager().openCustomPage(ref, store, new MailComposeGui(playerref));
             playSound(commandBuffer, targetBlock, ref, "SFX_Books_And_Papers_Mailbox_Send");
         } else {
             // Retrieve mail

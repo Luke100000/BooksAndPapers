@@ -1,5 +1,6 @@
 # 1.1.0
 
+* Added the lectern to showcase and copy books
 * Fixed issues with non-ascii characters
 * Clarified send mail tooltip
 

@@ -1,0 +1,111 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Books_And_Papers_Lectern.name",
+    "Description": "server.items.Books_And_Papers_Lectern.description"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Furniture.Containers"
+  ],
+  "Set": "Furniture_Adventure",
+  "IconProperties": {
+    "Scale": 0.6,
+    "Rotation": [
+      22,
+      43,
+      19
+    ],
+    "Translation": [
+      -1,
+      -18
+    ]
+  },
+  "BlockType": {
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Wood",
+    "CustomModel": "Blocks/Books_And_Papers_Lectern.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Books_And_Papers_Lectern.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Woods"
+      }
+    },
+    "HitboxType": "Books_And_Papers_Lectern",
+    "InteractionHint": "server.interactionHints.booksAndPapers.lectern",
+    "Material": "Solid",
+    "Opacity": "Cutout",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "VariantRotation": "NESW",
+    "ParticleColor": "#8B4513",
+    "State": {
+      "Id": "container",
+      "Capacity": 1,
+      "Definitions": {
+        "CloseWindow": {
+          "InteractionSoundEventId": "SFX_Chest_Wooden_Close"
+        },
+        "OpenWindow": {
+          "InteractionSoundEventId": "SFX_Chest_Wooden_Open"
+        }
+      }
+    },
+    "Interactions": {
+      "Primary": "Break_Container",
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "Condition",
+            "Crouching": true,
+            "Next": {
+              "Type": "OpenContainer"
+            },
+            "Failed": {
+              "Type": "Books_And_Papers_Lectern"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "Icon": "Icons/ItemsGenerated/Books_And_Papers_Lectern.png",
+  "ItemSoundSetId": "ISS_Blocks_Wood",
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Wood"
+    ]
+  },
+  "Recipe": {
+    "TimeSeconds": 2,
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Trunk",
+        "Quantity": 8
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Workbench",
+        "Type": "Crafting",
+        "Categories": [
+          "Workbench_Tinkering"
+        ]
+      }
+    ],
+    "KnowledgeRequired": false
+  }
+}

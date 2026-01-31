@@ -25,6 +25,6 @@ public record BookUISupplier(
     @Nonnull
     @Override
     public CustomUIPage tryCreate(Ref<EntityStore> ref, ComponentAccessor<EntityStore> componentAccessor, @Nonnull PlayerRef playerRef, InteractionContext context) {
-        return new BooksGui(playerRef, style, background);
+        return new BooksGui(playerRef, context.getTargetBlock(), style, background);
     }
 }

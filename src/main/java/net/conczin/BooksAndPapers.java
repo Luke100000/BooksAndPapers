@@ -28,6 +28,7 @@ public class BooksAndPapers extends JavaPlugin {
         this.mailbox = this.getEntityStoreRegistry().registerResource(MailboxResource.class, "BooksAndPapersMailboxes", MailboxResource.CODEC);
 
         this.getCodecRegistry(Interaction.CODEC).register("Books_And_Papers_Mailbox", MailboxInteraction.class, MailboxInteraction.CODEC);
+        this.getCodecRegistry(Interaction.CODEC).register("Books_And_Papers_Lectern", LecternInteraction.class, LecternInteraction.CODEC);
 
         this.getCodecRegistry(OpenCustomUIInteraction.PAGE_CODEC).register("Books_And_Papers_Book", BookUISupplier.class, BookUISupplier.CODEC);
     }

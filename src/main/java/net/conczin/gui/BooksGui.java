@@ -3,8 +3,10 @@ package net.conczin.gui;
 import com.hypixel.hytale.codec.Codec;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
+import com.hypixel.hytale.protocol.BlockPosition;
 import com.hypixel.hytale.protocol.packets.interface_.CustomPageLifetime;
 import com.hypixel.hytale.protocol.packets.interface_.CustomUIEventBindingType;
+import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.ui.builder.EventData;
 import com.hypixel.hytale.server.core.ui.builder.UICommandBuilder;
 import com.hypixel.hytale.server.core.ui.builder.UIEventBuilder;
@@ -24,12 +26,14 @@ public class BooksGui extends CodecDataInteractiveUIPage<BooksGui.Data> {
     private boolean editMode = true;
     private int page = 0;
 
+    private final BlockPosition block;
     private final String style;
     private final String background;
 
-    public BooksGui(@Nonnull PlayerRef playerRef, String style, String background) {
+    public BooksGui(@Nonnull PlayerRef playerRef, BlockPosition block, String style, String background) {
         super(playerRef, CustomPageLifetime.CanDismiss, Data.CODEC);
 
+        this.block = block;
         this.style = style;
         this.background = background;
     }
@@ -50,7 +54,7 @@ public class BooksGui extends CodecDataInteractiveUIPage<BooksGui.Data> {
     }
 
     private void buildList(Ref<EntityStore> ref, UICommandBuilder commandBuilder) {
-        BookData book = Utils.getData(ref, METADATA_KEY, BookData.CODEC);
+        BookData book = Utils.getData(ref, block, METADATA_KEY, BookData.CODEC);
         editMode = editMode && !book.signed;
 
         // Clamp page
@@ -123,18 +127,20 @@ public class BooksGui extends CodecDataInteractiveUIPage<BooksGui.Data> {
         }
 
         if ("Sign".equals(data.action)) {
-            Utils.setPage(ref, store, BookSignGui::new);
+            Player player = store.getComponent(ref, Player.getComponentType());
+            assert player != null;
+            player.getPageManager().openCustomPage(ref, store, new BookSignGui(playerRef, block));
         }
     }
 
     private void saveBook(Ref<EntityStore> ref, String title, String content) {
-        BookData book = Utils.getData(ref, METADATA_KEY, BookData.CODEC);
+        BookData book = Utils.getData(ref, block, METADATA_KEY, BookData.CODEC);
         if (book.signed) return;
 
         BookData.Page page = book.getOrCreatePage(this.page);
         page.title = title == null ? page.title : title;
         page.content = content == null ? page.content : content;
 
-        Utils.setData(ref, METADATA_KEY, BookData.CODEC, book);
+        Utils.setData(ref, block, METADATA_KEY, BookData.CODEC, book);
     }
 }

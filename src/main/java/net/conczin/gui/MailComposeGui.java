@@ -30,8 +30,8 @@ import static net.conczin.data.BookData.METADATA_KEY;
 
 
 public class MailComposeGui extends CodecDataInteractiveUIPage<MailComposeGui.Data> {
-    public MailComposeGui(@Nonnull PlayerRef playerRef, CustomPageLifetime lifetime) {
-        super(playerRef, lifetime, Data.CODEC);
+    public MailComposeGui(PlayerRef playerRef) {
+        super(playerRef, CustomPageLifetime.CanDismiss, Data.CODEC);
     }
 
     @Override

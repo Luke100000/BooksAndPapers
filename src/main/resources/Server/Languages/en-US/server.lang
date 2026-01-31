@@ -7,9 +7,16 @@ items.Books_And_Papers_Parchment.name = Parchment
 items.Books_And_Papers_Mailbox.name = Mailbox
 items.Books_And_Papers_Mailbox.description = Interact to send or receive letters from other players.
 
+items.Books_And_Papers_Lectern.name = Lectern
+items.Books_And_Papers_Lectern.description = A stand for displaying books. Secondary action to read the book. Click with a book to copy it's content.
+
 interactions.booksAndPapers.mailbox.empty = Your mailbox is empty.
+interactions.booksAndPapers.lectern.empty = There is no book on this lectern, crouch and interact to place one.
+interactions.booksAndPapers.lectern.copy_fail = Make sure the book in your hand is empty to copy from the lectern.
+interactions.booksAndPapers.lectern.copy_success = You have copied the book from the lectern.
 
 interactionHints.booksAndPapers.collectMail = "Press [{key}] to collect mail or send a letter in your hand."
+interactionHints.booksAndPapers.lectern = "Press [{key}] to read, crouch to open inventory."
 
 customUI.booksAndPapers.previous = Previous Page
 customUI.booksAndPapers.next = Next Page
