@@ -44,34 +44,36 @@ public class MailboxInteraction extends SimpleBlockInteraction {
             @Nonnull Vector3i targetBlock,
             @Nonnull CooldownHandler cooldownHandler
     ) {
-        Ref<EntityStore> ref = context.getEntity();
-        Store<EntityStore> store = ref.getStore();
-        UUID uuid = Utils.getUUID(ref);
-        Player player = store.getComponent(ref, Player.getComponentType());
-        if (player == null) return;
-        PlayerRef playerref = commandBuffer.getComponent(ref, PlayerRef.getComponentType());
-        if (playerref == null) return;
+        world.execute(() -> {
+            Ref<EntityStore> ref = context.getEntity();
+            Store<EntityStore> store = ref.getStore();
+            UUID uuid = Utils.getUUID(ref);
+            Player player = store.getComponent(ref, Player.getComponentType());
+            if (player == null) return;
+            PlayerRef playerref = commandBuffer.getComponent(ref, PlayerRef.getComponentType());
+            if (playerref == null) return;
 
-        if (itemInHand != null && Utils.getBookSupplier(itemInHand) != null) {
-            // Send mail
-            player.getPageManager().openCustomPage(ref, store, new MailComposeGui(playerref));
-            playSound(commandBuffer, targetBlock, ref, "SFX_Books_And_Papers_Mailbox_Send");
-        } else {
-            // Retrieve mail
-            MailboxResource mailboxResource = store.getResource(MailboxResource.getResourceType());
-            MailboxResource.MailBox mailbox = mailboxResource.getMailbox(uuid);
-            mailbox.setPlayerName(player.getDisplayName());
-            if (mailbox.hasMail()) {
-                ItemStack pop = mailbox.pop();
-                if (pop != null) {
-                    SimpleItemContainer.addOrDropItemStacks(store, ref, player.getInventory().getCombinedHotbarFirst(), List.of(pop));
-                    playSound(commandBuffer, targetBlock, ref, "SFX_Books_And_Papers_Mailbox_Receive");
-                }
+            if (itemInHand != null && Utils.getBookSupplier(itemInHand) != null) {
+                // Send mail
+                player.getPageManager().openCustomPage(ref, store, new MailComposeGui(playerref));
+                playSound(commandBuffer, targetBlock, ref, "SFX_Books_And_Papers_Mailbox_Send");
             } else {
-                player.sendMessage(Message.translation("server.interactions.booksAndPapers.mailbox.empty"));
-                playSound(commandBuffer, targetBlock, ref, "SFX_Books_And_Papers_Mailbox_Empty");
+                // Retrieve mail
+                MailboxResource mailboxResource = store.getResource(MailboxResource.getResourceType());
+                MailboxResource.MailBox mailbox = mailboxResource.getMailbox(uuid);
+                mailbox.setPlayerName(player.getDisplayName());
+                if (mailbox.hasMail()) {
+                    ItemStack pop = mailbox.pop();
+                    if (pop != null) {
+                        SimpleItemContainer.addOrDropItemStacks(store, ref, player.getInventory().getCombinedHotbarFirst(), List.of(pop));
+                        playSound(commandBuffer, targetBlock, ref, "SFX_Books_And_Papers_Mailbox_Receive");
+                    }
+                } else {
+                    player.sendMessage(Message.translation("server.interactions.booksAndPapers.mailbox.empty"));
+                    playSound(commandBuffer, targetBlock, ref, "SFX_Books_And_Papers_Mailbox_Empty");
+                }
             }
-        }
+        });
     }
 
     private static void playSound(CommandBuffer<EntityStore> commandBuffer, Vector3i targetBlock, Ref<EntityStore> ref, String sound) {
