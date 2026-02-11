@@ -1,13 +1,13 @@
-items.Books_And_Papers_Book.name = Book
-items.Books_And_Papers_Demon.name = Demonic Book
-items.Books_And_Papers_Herbalist.name = Herbalist's Notebook
-items.Books_And_Papers_Letter.name = Letter
-items.Books_And_Papers_Parchment.name = Parchment
+items.Books_And_Papers_Book.name = Buch
+items.Books_And_Papers_Demon.name = Dämonisches Buch
+items.Books_And_Papers_Herbalist.name = Notizbuch des Kräuterkundlers
+items.Books_And_Papers_Letter.name = Brief
+items.Books_And_Papers_Parchment.name = Pergament
 
-items.Books_And_Papers_Mailbox.name = Mailbox
-items.Books_And_Papers_Mailbox.description = Interact to send or receive letters from other players.
+items.Books_And_Papers_Mailbox.name = Postfach
+items.Books_And_Papers_Mailbox.description = Interagiere, um Briefe an andere Spieler zu senden oder zu empfangen.
 
-items.Books_And_Papers_Lectern.name = Lectern
+items.Books_And_Papers_Lectern.name = Lesepult
 items.Books_And_Papers_Lectern.description = A stand for displaying books. Secondary action to read the book. Click with a book to copy it's content.
 
 interactions.booksAndPapers.mailbox.empty = Your mailbox is empty.
