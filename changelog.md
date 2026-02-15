@@ -1,6 +1,6 @@
 # 1.1.1
 
-* Fixed crash on full inventory (Thanks Hezkore!)
+* Fixed crash on full inventory (Thanks Lok101!)
 
 # 1.1.0
 
