@@ -1,3 +1,7 @@
+# 1.1.1
+
+* Fixed crash on full inventory (Thanks Hezkore!)
+
 # 1.1.0
 
 * Added the lectern to showcase and copy books
