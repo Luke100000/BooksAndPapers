@@ -1,3 +1,8 @@
+# 1.1.2
+
+* Updated to 2026.02.17-255364b8e
+* Added languages
+
 # 1.1.1
 
 * Fixed crash on full inventory (Thanks Lok101!)
