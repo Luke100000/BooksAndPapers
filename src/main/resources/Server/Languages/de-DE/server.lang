@@ -1,0 +1,32 @@
+items.Books_And_Papers_Book.name = Buch
+items.Books_And_Papers_Demon.name = Dämonisches Buch
+items.Books_And_Papers_Herbalist.name = Notizbuch des Kräuterkundlers
+items.Books_And_Papers_Letter.name = Brief
+items.Books_And_Papers_Parchment.name = Pergament
+
+items.Books_And_Papers_Mailbox.name = Postfach
+items.Books_And_Papers_Mailbox.description = Interagiere, um Briefe an andere Spieler zu senden oder zu empfangen.
+
+items.Books_And_Papers_Lectern.name = Lesepult
+items.Books_And_Papers_Lectern.description = A stand for displaying books. Secondary action to read the book. Click with a book to copy it's content.
+
+interactions.booksAndPapers.mailbox.empty = Your mailbox is empty.
+interactions.booksAndPapers.lectern.empty = There is no book on this lectern, crouch and interact to place one.
+interactions.booksAndPapers.lectern.copy_fail = Make sure the book in your hand is empty to copy from the lectern.
+interactions.booksAndPapers.lectern.copy_success = You have copied the book from the lectern.
+
+interactionHints.booksAndPapers.collectMail = "Press [{key}] to collect mail or send a letter in your hand."
+interactionHints.booksAndPapers.lectern = "Press [{key}] to read, crouch to open inventory."
+
+customUI.booksAndPapers.previous = Previous Page
+customUI.booksAndPapers.next = Next Page
+customUI.booksAndPapers.signTitle = Sign and Lock
+customUI.booksAndPapers.sign = Sign
+customUI.booksAndPapers.composeTitle = Send to Player's Mailbox
+customUI.booksAndPapers.send = Send
+customUI.booksAndPapers.recipient = Recipient
+customUI.booksAndPapers.edit = Toggle Edit Mode
+customUI.booksAndPapers.empty = Empty
+customUI.booksAndPapers.title = Title
+customUI.booksAndPapers.author = Author
+customUI.booksAndPapers.cancel = Cancel

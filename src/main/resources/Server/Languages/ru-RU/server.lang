@@ -1,0 +1,32 @@
+items.Books_And_Papers_Book.name = Книга
+items.Books_And_Papers_Demon.name = Демоническая Книга
+items.Books_And_Papers_Herbalist.name = Тетрадь Ботаника
+items.Books_And_Papers_Letter.name = Письмо
+items.Books_And_Papers_Parchment.name = Пергамент
+
+items.Books_And_Papers_Mailbox.name = Почтовый Ящик
+items.Books_And_Papers_Mailbox.description = Откройте, чтобы отправлять или получать письма от других игроков.
+
+items.Books_And_Papers_Lectern.name = Lectern
+items.Books_And_Papers_Lectern.description = A stand for displaying books. Secondary action to read the book. Click with a book to copy it's content.
+
+interactions.booksAndPapers.mailbox.empty = Ваш почтовый ящик пуст.
+interactions.booksAndPapers.lectern.empty = There is no book on this lectern, crouch and interact to place one.
+interactions.booksAndPapers.lectern.copy_fail = Make sure the book in your hand is empty to copy from the lectern.
+interactions.booksAndPapers.lectern.copy_success = You have copied the book from the lectern.
+
+interactionHints.booksAndPapers.collectMail = "Press [{key}] to collect mail or send a letter in your hand."
+interactionHints.booksAndPapers.lectern = "Press [{key}] to read, crouch to open inventory."
+
+customUI.booksAndPapers.previous = Предыдущая Страница
+customUI.booksAndPapers.next = Следующая Страница
+customUI.booksAndPapers.signTitle = Подписать и Закрыть
+customUI.booksAndPapers.sign = Подписать
+customUI.booksAndPapers.composeTitle = Отправить в Почтовый Ящик Игрока
+customUI.booksAndPapers.send = Отправить
+customUI.booksAndPapers.recipient = Получатель
+customUI.booksAndPapers.edit = Режим Редактирования
+customUI.booksAndPapers.empty = Пусто
+customUI.booksAndPapers.title = Название
+customUI.booksAndPapers.author = Автор
+customUI.booksAndPapers.cancel = Отмена
