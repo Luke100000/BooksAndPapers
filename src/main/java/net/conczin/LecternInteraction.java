@@ -4,7 +4,6 @@ import com.hypixel.hytale.codec.builder.BuilderCodec;
 import com.hypixel.hytale.component.CommandBuffer;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
-import com.hypixel.hytale.math.vector.Vector3i;
 import com.hypixel.hytale.protocol.BlockPosition;
 import com.hypixel.hytale.protocol.InteractionType;
 import com.hypixel.hytale.server.core.Message;
@@ -29,6 +28,8 @@ import net.conczin.utils.Utils;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import org.joml.Vector3i;
 
 import static net.conczin.data.BookData.METADATA_KEY;
 
@@ -84,7 +85,7 @@ public class LecternInteraction extends SimpleBlockInteraction {
                 playSound(commandBuffer, targetPosition, ref, "SFX_Books_And_Papers_Open");
             } else {
                 // The lectern is empty
-                player.sendMessage(Message.translation("server.interactions.booksAndPapers.lectern.empty"));
+                playerref.sendMessage(Message.translation("server.interactions.booksAndPapers.lectern.empty"));
             }
         } else {
             if (bookInLectern == null) {
@@ -103,9 +104,9 @@ public class LecternInteraction extends SimpleBlockInteraction {
                 if (bookInHand.getOrCreatePage(0).content.isEmpty()) {
                     Utils.setData(ref, null, METADATA_KEY, BookData.CODEC, bookInLectern);
                     playSound(commandBuffer, targetPosition, ref, "SFX_Books_And_Papers_Open");
-                    player.sendMessage(Message.translation("server.interactions.booksAndPapers.lectern.copy_success"));
+                    playerref.sendMessage(Message.translation("server.interactions.booksAndPapers.lectern.copy_success"));
                 } else {
-                    player.sendMessage(Message.translation("server.interactions.booksAndPapers.lectern.copy_fail"));
+                    playerref.sendMessage(Message.translation("server.interactions.booksAndPapers.lectern.copy_fail"));
                 }
             }
         }

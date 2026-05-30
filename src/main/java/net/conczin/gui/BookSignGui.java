@@ -6,7 +6,6 @@ import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.protocol.BlockPosition;
 import com.hypixel.hytale.protocol.packets.interface_.CustomPageLifetime;
 import com.hypixel.hytale.protocol.packets.interface_.CustomUIEventBindingType;
-import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.ui.builder.EventData;
 import com.hypixel.hytale.server.core.ui.builder.UICommandBuilder;
 import com.hypixel.hytale.server.core.ui.builder.UIEventBuilder;
@@ -35,7 +34,7 @@ public class BookSignGui extends CodecDataInteractiveUIPage<BookSignGui.Data> {
     public void build(@Nonnull Ref<EntityStore> ref, @Nonnull UICommandBuilder commandBuilder, @Nonnull UIEventBuilder eventBuilder, @Nonnull Store<EntityStore> store) {
         commandBuilder.append("Pages/BooksAndPapers/BookSign.ui");
 
-        String author = Objects.requireNonNull(ref.getStore().getComponent(ref, Player.getComponentType())).getDisplayName();
+        String author = Objects.requireNonNull(playerRef.getUsername());
         commandBuilder.set("#TitleField.Value", "");
         commandBuilder.set("#Author.Value", author);
 

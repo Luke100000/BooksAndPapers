@@ -4,7 +4,6 @@ import com.hypixel.hytale.codec.builder.BuilderCodec;
 import com.hypixel.hytale.component.CommandBuffer;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
-import com.hypixel.hytale.math.vector.Vector3i;
 import com.hypixel.hytale.protocol.InteractionType;
 import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.asset.type.soundevent.config.SoundEvent;
@@ -25,6 +24,9 @@ import net.conczin.utils.Utils;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import org.joml.Vector3i;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -62,7 +64,7 @@ public class MailboxInteraction extends SimpleBlockInteraction {
                 // Retrieve mail
                 MailboxResource mailboxResource = store.getResource(MailboxResource.getResourceType());
                 MailboxResource.MailBox mailbox = mailboxResource.getMailbox(uuid);
-                mailbox.setPlayerName(player.getDisplayName());
+                mailbox.setPlayerName(playerref.getUsername());
                 if (mailbox.hasMail()) {
                     ItemStack pop = mailbox.pop();
                     if (pop != null) {
@@ -70,7 +72,7 @@ public class MailboxInteraction extends SimpleBlockInteraction {
                         playSound(commandBuffer, targetBlock, ref, "SFX_Books_And_Papers_Mailbox_Receive");
                     }
                 } else {
-                    player.sendMessage(Message.translation("server.interactions.booksAndPapers.mailbox.empty"));
+                    playerref.sendMessage(Message.translation("server.interactions.booksAndPapers.mailbox.empty"));
                     playSound(commandBuffer, targetBlock, ref, "SFX_Books_And_Papers_Mailbox_Empty");
                 }
             }

@@ -1,7 +1,7 @@
 {
   "Group": "Conczin",
   "Name": "Books and Papers",
-  "Version": "0.0.1",
+  "Version": "1.2.1",
   "Description": "Various writable books, a mail system, and hidden lore across the world.",
   "Authors": [
     {
@@ -17,7 +17,7 @@
   ],
   "Website": "https://conczin.net/",
   "Main": "net.conczin.BooksAndPapers",
-  "ServerVersion": "2026.03.26-89796e57b",
+  "ServerVersion": "0.5.0",
   "Dependencies": {},
   "OptionalDependencies": {},
   "DisabledByDefault": false,
