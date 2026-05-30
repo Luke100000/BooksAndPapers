@@ -1,32 +1,32 @@
-items.Books_And_Papers_Book.name = Book
-items.Books_And_Papers_Demon.name = Demonic Book
-items.Books_And_Papers_Herbalist.name = Herbalist's Notebook
-items.Books_And_Papers_Letter.name = Letter
-items.Books_And_Papers_Parchment.name = Parchment
+items.Books_And_Papers_Book.name = Libro
+items.Books_And_Papers_Demon.name = Libro Demoníaco
+items.Books_And_Papers_Herbalist.name = Cuaderno del Herbolario
+items.Books_And_Papers_Letter.name = Carta
+items.Books_And_Papers_Parchment.name = Pergamino
 
-items.Books_And_Papers_Mailbox.name = Mailbox
-items.Books_And_Papers_Mailbox.description = Interact to send or receive letters from other players.
+items.Books_And_Papers_Mailbox.name = Buzón
+items.Books_And_Papers_Mailbox.description = Interactúa para enviar o recibir cartas de otros jugadores.
 
-items.Books_And_Papers_Lectern.name = Lectern
-items.Books_And_Papers_Lectern.description = A stand for displaying books. Secondary action to read the book. Click with a book to copy it's content.
+items.Books_And_Papers_Lectern.name = Atril
+items.Books_And_Papers_Lectern.description = Un soporte para exhibir libros. Usa la acción secundaria para leer el libro exhibido. Interactúa con un libro vacío en la mano para copiar el contenido del libro exhibido.
 
-interactions.booksAndPapers.mailbox.empty = Your mailbox is empty.
-interactions.booksAndPapers.lectern.empty = There is no book on this lectern, crouch and interact to place one.
-interactions.booksAndPapers.lectern.copy_fail = Make sure the book in your hand is empty to copy from the lectern.
-interactions.booksAndPapers.lectern.copy_success = You have copied the book from the lectern.
+interactions.booksAndPapers.mailbox.empty = Tu buzón está vacío.
+interactions.booksAndPapers.lectern.empty = No hay ningún libro en este atril, agáchate e interactúa para colocar uno.
+interactions.booksAndPapers.lectern.copy_fail = Asegúrate de tener un libro vacío en la mano para copiar el contenido del libro colocado en el atril.
+interactions.booksAndPapers.lectern.copy_success = Has copiado el libro del atril.
 
-interactionHints.booksAndPapers.collectMail = "Press [{key}] to collect mail or send a letter in your hand."
-interactionHints.booksAndPapers.lectern = "Press [{key}] to read, crouch to open inventory."
+interactionHints.booksAndPapers.collectMail = "Pulsa [{key}] para recoger el correo o enviar la carta que tienes en la mano."
+interactionHints.booksAndPapers.lectern = "Pulsa [{key}] para leer; mientras estás agachado, abrirás el inventario."
 
-customUI.booksAndPapers.previous = Previous Page
-customUI.booksAndPapers.next = Next Page
-customUI.booksAndPapers.signTitle = Sign and Lock
-customUI.booksAndPapers.sign = Sign
-customUI.booksAndPapers.composeTitle = Send to Player's Mailbox
-customUI.booksAndPapers.send = Send
-customUI.booksAndPapers.recipient = Recipient
-customUI.booksAndPapers.edit = Toggle Edit Mode
-customUI.booksAndPapers.empty = Empty
-customUI.booksAndPapers.title = Title
-customUI.booksAndPapers.author = Author
-customUI.booksAndPapers.cancel = Cancel
+customUI.booksAndPapers.previous = Página Anterior
+customUI.booksAndPapers.next = Página Siguiente
+customUI.booksAndPapers.signTitle = Firmar y Bloquear
+customUI.booksAndPapers.sign = Firmar
+customUI.booksAndPapers.composeTitle = Enviar al Buzón del Jugador
+customUI.booksAndPapers.send = Enviar
+customUI.booksAndPapers.recipient = Destinatario
+customUI.booksAndPapers.edit = Alternar el Modo Edición
+customUI.booksAndPapers.empty = Vacío
+customUI.booksAndPapers.title = Título
+customUI.booksAndPapers.author = Autor
+customUI.booksAndPapers.cancel = Cancelar
