@@ -17,7 +17,7 @@
   ],
   "Website": "https://conczin.net/",
   "Main": "net.conczin.BooksAndPapers",
-  "ServerVersion": ">=0.5.0",
+  "ServerVersion": ">=0.6.4",
   "Dependencies": {},
   "OptionalDependencies": {},
   "DisabledByDefault": false,

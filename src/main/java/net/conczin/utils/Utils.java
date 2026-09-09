@@ -15,7 +15,7 @@ import com.hypixel.hytale.server.core.modules.interaction.interaction.config.Roo
 import com.hypixel.hytale.server.core.modules.interaction.interaction.config.server.OpenCustomUIInteraction;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.chunk.BlockChunk;
-import com.hypixel.hytale.server.core.universe.world.chunk.BlockComponentChunk;
+import com.hypixel.hytale.server.core.universe.world.chunk.section.BlockComponentSection;
 import com.hypixel.hytale.server.core.universe.world.chunk.section.BlockSection;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
@@ -97,8 +97,7 @@ public class Utils {
 
         Store<ChunkStore> chunkStoreData = chunkStore.getStore();
         BlockChunk blockChunk = chunkStoreData.getComponent(chunkRef, BlockChunk.getComponentType());
-        BlockComponentChunk blockComponentChunk = chunkStoreData.getComponent(chunkRef, BlockComponentChunk.getComponentType());
-        if (blockChunk == null || blockComponentChunk == null) {
+        if (blockChunk == null) {
             return null;
         }
 
@@ -114,7 +113,18 @@ public class Utils {
             z -= FillerBlockUtil.unpackZ(filler);
         }
 
-        Ref<ChunkStore> blockRef = blockComponentChunk.getEntityReference(ChunkUtil.indexBlockInColumn(x, y, z));
+        Ref<ChunkStore> sectionRef = chunkStore.getChunkSectionReferenceAtBlock(x, y, z);
+        if (sectionRef == null || !sectionRef.isValid()) {
+            return null;
+        }
+
+        BlockComponentSection blockComponentSection = chunkStoreData.getComponent(
+                sectionRef, BlockComponentSection.getComponentType());
+        if (blockComponentSection == null) {
+            return null;
+        }
+
+        Ref<ChunkStore> blockRef = blockComponentSection.getBlockReference(ChunkUtil.indexBlock(x, y, z));
         if (blockRef == null) {
             return null;
         }

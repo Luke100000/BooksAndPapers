@@ -1,3 +1,7 @@
+# 1.2.2
+
+* Updated to Hytale 0.6.4
+
 # 1.2.1
 
 * Updated to patch 5
